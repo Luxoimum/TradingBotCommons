@@ -4,7 +4,7 @@ import numpy as np
 
 
 @dataclass
-class Candle:
+class StockMarket:
     low: float
     high: float
     open: float
@@ -45,30 +45,3 @@ class Candle:
             "high": Decimal(str(self.high)),
             "low": Decimal(str(self.low)),
         }
-
-
-# Class that contains typical values of a candle and our custom values for a strategy
-# !!ref: Startey1 from main strategy document
-@dataclass
-class StockMarket(Candle):
-    sma: float = None
-    ema: float = None
-    chop: float = None
-    rsi: float = None
-    long_signal: bool = False
-    short_signal: bool = False
-
-    def to_dict(self) -> dict:
-        """
-        :return: dict representation of self
-        """
-        super_dict = super().to_dict()
-        super_dict.update(
-            {
-                "ema": Decimal(str(self.ema)),
-                "sma": Decimal(str(self.sma)),
-                "chop": Decimal(str(self.chop)),
-                "rsi": Decimal(str(self.rsi)),
-            }
-        )
-        return super_dict
