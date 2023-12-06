@@ -1,6 +1,5 @@
 from dataclasses import dataclass, astuple
 from decimal import Decimal
-import numpy as np
 
 
 @dataclass
@@ -12,12 +11,6 @@ class StockMarket:
     volume: float
     market: str
     last_operation_time: str
-
-    def __array__(self):
-        """
-        :return: numpy array of self
-        """
-        return np.array(astuple(self))
 
     def __len__(self):  # method for compatibility with arrays of self
         """
